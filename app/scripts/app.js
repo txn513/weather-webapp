@@ -1,35 +1,11 @@
-'use strict';
-
-/**
- * @ngdoc overview
- * @name testApp
- * @description
- * # testApp
- *
- * Main module of the application.
- */
-angular
-  .module('testApp', [
-    'ngAnimate',
-    'ngCookies',
-    'ngResource',
-    'ngRoute',
-    'ngSanitize',
-    'ngTouch'
-  ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
-  });
+angular.module('F1FeederApp', [
+    'F1FeederApp.controllers',
+    'F1FeederApp.services',
+    'ngRoute'
+  ]).
+config(['$routeProvider',function($routeProvider) {
+  $routeProvider.
+    when("/", {templateUrl: "./views/main.html", controller: "driversController"}).
+    when("/city", {templateUrl: "./views/city.html", controller: "driversController"}).
+    otherwise({redirectTo: "/"});
+}])
