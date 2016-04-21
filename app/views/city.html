@@ -1,49 +1,49 @@
 <div class="content">
   <div class="container">
+    <!-- <h1>Weather in {{city.name}}</h1> -->
     <div class="row">
         <div class="col-sm-6">
-          <table class="table table-striped">
+          <div class="panel panel-default">
+            <div class="panel-heading">{{city.name}} | {{date | date:'yyyy-MM-dd'}}</div>
+            <div class="panel-body">
+              <table class="table table-striped">
             <thead>
               <tr>
-                <th>City</th>
-                <th>{{cityName}}</th>
+                <th>Current Temp.</td>
+                <th>{{city.main.temp | tempConvert}} °C</td>
               </tr>
             </thead>
             <tbody>
+              
               <tr>
-                <td>Wind<td>
-                <td><td>
+                <td>Wind</td>
+                <td>{{city.wind.speed}} m/s</td>
+              </tr>
+              
+              <tr>
+                <td>Pressure</td>
+                <td>{{city.main.pressure}} hpa</td>
               </tr>
               <tr>
-                <td>Cloudiness<td>
-                <td><td>
+                <td>Humidity</td>
+                <td>{{city.main.humidity}} %</td>
               </tr>
               <tr>
-                <td>Pressure<td>
-                <td><td>
+                <td>Sunrise</td>
+                <td>{{city.sys.sunrise*1000 | date:'HH:mm'}}</td>
               </tr>
               <tr>
-                <td>Humidity<td>
-                <td><td>
-              </tr>
-              <tr>
-                <td>Sunrise<td>
-                <td><td>
-              </tr>
-              <tr>
-                <td>Sunset<td>
-                <td><td>
+                <td>Sunset</td>
+                <td>{{city.sys.sunset*1000 | date:'HH:mm'}}</td>
               </tr>
             </tbody>
           </table>
-        </div>
-        <div class="col-sm-6"></div>
-
-        <div class="form-group">
-          <div class="col-sm-12">
-            <a href="#/" class="btn btn-default">Back To Search</a>
+            </div>
           </div>
         </div>
+    
+
+        
     </div>
   </div>
 </div>
