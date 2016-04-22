@@ -27,7 +27,7 @@ controller('driversController', ['$scope', 'ergastAPIservice', '$location', func
 				// console.log(response);
 	        //Dig into the responde to get the relevant data
 	        	$location.path("/"+ response.id);
-	        	console.log(response);
+	        	// console.log(response);
 	    	});
 	}
 	$scope.getCurrentLocation = function() {
@@ -54,9 +54,15 @@ controller('driversController', ['$scope', 'ergastAPIservice', '$location', func
 }]).
 controller('singleController', ['$routeParams', '$scope', 'ergastAPIservice', function($routeParams, $scope, ergastAPIservice){
 	$scope.id = $routeParams.id;
+	$scope.date = new Date();
 	ergastAPIservice.getByID($routeParams.id).success(function (response) {
 		$scope.city = response;	
+
+	});
+	
+	ergastAPIservice.getFiveById($routeParams.id).success(function (response) {
+		$scope.nextDays = response;
 		console.log(response);	
 	});
-	$scope.date = new Date();
+
 }]);

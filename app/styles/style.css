@@ -1,5 +1,13 @@
+
 h1 {
 	text-align: center;
 	padding-bottom: 10px;
 /*	border-bottom: 1px solid #ccc;*/
+	font-family: Copperplate;
+}
+
+.panel-body .temp {
+	font-size: 30px;
+	/*padding-right: 10px;
+	padding-left: 10px;*/
 }

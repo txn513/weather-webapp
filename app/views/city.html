@@ -4,44 +4,80 @@
     <div class="row">
         <div class="col-sm-6">
           <div class="panel panel-default">
-            <div class="panel-heading">{{city.name}} | {{date | date:'yyyy-MM-dd'}}</div>
+            <div class="panel-heading">
+              Today<span class="pull-right">{{date | date:'dd MMM'}}</span>
+              
+            </div>
             <div class="panel-body">
-              <table class="table table-striped">
-            <thead>
-              <tr>
-                <th>Current Temp.</td>
-                <th>{{city.main.temp | tempConvert}} °C</td>
-              </tr>
-            </thead>
+              <div class="col-xs-6">
+                <h2>{{city.main.temp | tempConvert}} °C</h2>
+                <h6><img ng-src="http://openweathermap.org/img/w/{{city.weather[0].icon}}.png"><span>{{city.weather[0].description}}</span></h6>
+              </div>
+              <div class="col-xs-6 pull-right">
+                <h2>{{city.name}}</h2>
+                <h4>{{city.sys.country}}</h4>
+              </div>
+              
+             
+            </div>
+             <table class="table table-striped table1">
+            
             <tbody>
               
               <tr>
-                <td>Wind</td>
-                <td>{{city.wind.speed}} m/s</td>
+                <th>Wind</th>
+                <td>{{city.wind.speed}} m/s | {{city.wind.deg | direction}}</td>
               </tr>
               
               <tr>
-                <td>Pressure</td>
+                <th>Pressure</th>
                 <td>{{city.main.pressure}} hpa</td>
               </tr>
               <tr>
-                <td>Humidity</td>
+                <th>Humidity</th>
                 <td>{{city.main.humidity}} %</td>
               </tr>
               <tr>
-                <td>Sunrise</td>
+                <th>Sunrise</th>
                 <td>{{city.sys.sunrise*1000 | date:'HH:mm'}}</td>
               </tr>
               <tr>
-                <td>Sunset</td>
+                <th>Sunset</th>
                 <td>{{city.sys.sunset*1000 | date:'HH:mm'}}</td>
               </tr>
             </tbody>
           </table>
-            </div>
           </div>
         </div>
-    
+        <div class="col-sm-6">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              NextDays<span class="pull-right">{{nextDays.list[1].dt*1000 | date: 'dd MMM'}} ~ {{nextDays.list[nextDays.list.length-1].dt*1000 | date: 'dd MMM'}}</span>
+            </div>
+            
+              <ul class="list-group">
+                <li class="list-group-item" ng-repeat="weather in nextDays.list" ng-if="$index>0">
+                  <div class="row">
+                    <div class="col-xs-5">{{weather.dt*1000 | date: 'dd MMM'}} 
+                    <img ng-src="http://openweathermap.org/img/w/{{city.weather[0].icon}}.png">
+                      <p>{{weather.weather[0].description}}</p>
+                    </div>
+                    <div class="col-xs-7">
+                      <span class="label label-warning">{{weather.temp.max}}</span>
+                      <span class="label label-info">{{weather.temp.min}}</span>
+                      <p>clouds: {{weather.clouds}}%<br>
+                      humidity: {{weather.humidity}}%<br>
+                      pressure: {{weather.pressure}} hpa
+                      </p>
+                 
+                    </div>
+                  </div>
+                </li>
+                
+              </ul>
+            </div>
+          
+        </div>
 
         
     </div>
