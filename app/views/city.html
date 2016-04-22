@@ -2,20 +2,25 @@
   <div class="container">
     <!-- <h1>Weather in {{city.name}}</h1> -->
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-6 col-md-6 current-day">
           <div class="panel panel-default">
             <div class="panel-heading">
               Today<span class="pull-right">{{date | date:'dd MMM'}}</span>
               
             </div>
             <div class="panel-body">
-              <div class="col-xs-6">
-                <h2>{{city.main.temp | tempConvert}} °C</h2>
-                <h6><img ng-src="http://openweathermap.org/img/w/{{city.weather[0].icon}}.png"><span>{{city.weather[0].description}}</span></h6>
+              <div class="col-xs-5 col-sm-5 col-md-6">
+                  <h2>{{city.main.temp | tempConvert}} °C</h2>
+                  <h6>
+                    <img ng-src="http://openweathermap.org/img/w/{{city.weather[0].icon}}.png">
+                    <span class="description">{{city.weather[0].description}}</span>
+                  </h6>
               </div>
-              <div class="col-xs-6 pull-right">
-                <h2>{{city.name}}</h2>
-                <h4>{{city.sys.country}}</h4>
+              <div class="col-xs-7 col-sm-7 col-md-6">
+                <div class="pull-right">
+                  <h2 style="word-break:keep-all">{{city.name}}</h2>
+                  <h4>{{city.sys.country}}</h4>
+                </div>
               </div>
               
              
@@ -26,50 +31,50 @@
               
               <tr>
                 <th>Wind</th>
-                <td>{{city.wind.speed}} m/s | {{city.wind.deg | direction}}</td>
+                <td><div>{{city.wind.speed}} m/s  {{city.wind.deg | direction}}<div></div></td>
               </tr>
               
               <tr>
                 <th>Pressure</th>
-                <td>{{city.main.pressure}} hpa</td>
+                <td><div>{{city.main.pressure}} hpa</div></td>
               </tr>
               <tr>
                 <th>Humidity</th>
-                <td>{{city.main.humidity}} %</td>
+                <td><div>{{city.main.humidity}} %</div></td>
               </tr>
               <tr>
                 <th>Sunrise</th>
-                <td>{{city.sys.sunrise*1000 | date:'HH:mm'}}</td>
+                <td><div>{{city.sys.sunrise*1000 | date:'HH:mm'}}</div></td>
               </tr>
               <tr>
                 <th>Sunset</th>
-                <td>{{city.sys.sunset*1000 | date:'HH:mm'}}</td>
+                <td><div>{{city.sys.sunset*1000 | date:'HH:mm'}}</div></td>
               </tr>
             </tbody>
           </table>
           </div>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-6 col-md-6 next-days">
           <div class="panel panel-default">
             <div class="panel-heading">
-              NextDays<span class="pull-right">{{nextDays.list[1].dt*1000 | date: 'dd MMM'}} ~ {{nextDays.list[nextDays.list.length-1].dt*1000 | date: 'dd MMM'}}</span>
+              Next Days<span class="pull-right">{{nextDays.list[1].dt*1000 | date: 'dd MMM'}} ~ {{nextDays.list[nextDays.list.length-1].dt*1000 | date: 'dd MMM'}}</span>
             </div>
             
               <ul class="list-group">
                 <li class="list-group-item" ng-repeat="weather in nextDays.list" ng-if="$index>0">
                   <div class="row">
-                    <div class="col-xs-5">{{weather.dt*1000 | date: 'dd MMM'}} 
-                    <img ng-src="http://openweathermap.org/img/w/{{city.weather[0].icon}}.png">
+                    <div class="col-xs-6 col-sm-6 next-temp">
+                      {{weather.dt*1000 | date: 'dd MMM'}} 
+                      <img ng-src="http://openweathermap.org/img/w/{{weather.weather[0].icon}}.png">
                       <p>{{weather.weather[0].description}}</p>
                     </div>
-                    <div class="col-xs-7">
-                      <span class="label label-warning">{{weather.temp.max}}</span>
-                      <span class="label label-info">{{weather.temp.min}}</span>
-                      <p>clouds: {{weather.clouds}}%<br>
+                    <div class="col-xs-6 col-sm-6 next-info">
+                      <span class="label label-info">{{weather.temp.min}} °C</span>
+                      <span class="label label-warning">{{weather.temp.max}} °C</span>
+                      <p class="next-details">clouds: {{weather.clouds}}%<br>
                       humidity: {{weather.humidity}}%<br>
                       pressure: {{weather.pressure}} hpa
                       </p>
-                 
                     </div>
                   </div>
                 </li>

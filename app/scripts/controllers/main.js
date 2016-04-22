@@ -9,8 +9,9 @@ controller('driversController', ['$scope', 'ergastAPIservice', '$location', func
 		if(!name){
 			alert('Please enter a city name');
 		}
-		else if(/^[\u4e00-\u9fa5]+$/i.test(name)){
+		else if(/^[\u4e00-\u9fa5]+$/gi.test(name)){
 			alert("请输入城市拼音");
+			return false;
 		}
 		else {
 			ergastAPIservice.getByName(name).success(function (response) {
@@ -22,33 +23,43 @@ controller('driversController', ['$scope', 'ergastAPIservice', '$location', func
 		}
 		
 	};
-	$scope.getDefaultCity = function(){
-		ergastAPIservice.getByName('shenzhen').success(function (response) {
+	var getCity = function(name){
+		ergastAPIservice.getByName(name).success(function (response) {
 				// console.log(response);
 	        //Dig into the responde to get the relevant data
 	        	$location.path("/"+ response.id);
 	        	// console.log(response);
 	    	});
 	}
-	$scope.getCurrentLocation = function() {
-	    if (navigator.geolocation) {
-	        navigator.geolocation.getCurrentPosition(showLocation);
-	    } 
-	    else { 
-	        alert("Geolocation is not supported by this browser.");
-    	}	
-	}
+	// var getCurrentLocation = function() {
+	//     if (navigator.geolocation){
+	//         navigator.geolocation.getCurrentPosition(showLocation);
+	//     } 
+	//     else { 
+	//         alert("Geolocation is not supported by this browser.");
+	//         getDefaultCity();
+ //    	}	
+	// }
 	// function showLocation(position){
-	// 	$scope.latitude = parseInt(position.coords.latitude);
- //    	$scope.longitude = parseInt(position.coords.longitude);
- //    	alert($scope.latitude);
- //    	ergastAPIservice.getByCoords($scope.latitude, $scope.longitude).success(function (response) {
+	// 	var latitude = position.coords.latitude;
+ //    	var longitude = position.coords.longitude;
+    
+ //    	ergastAPIservice.getByCoords(latitude,longitude).success(function (response) {
 	//         //Dig into the responde to get the relevant data
 	//         	$location.path("/"+ response.id);
+	//         	$scope.localCity = response;
+	//         	// console.log(response);
 	//     	});
 	// }
-
-	$scope.getDefaultCity();
+	ergastAPIservice.getIP().success(function (response) {
+	        //Dig into the responde to get the relevant data
+	        $scope.ip = response;
+	        console.log(response);
+	        getCity($scope.ip.city);
+	});
+	// getCity('shenzhen');
+	// getCurrentLocation();
+	
 
 
 }]).
@@ -57,12 +68,14 @@ controller('singleController', ['$routeParams', '$scope', 'ergastAPIservice', fu
 	$scope.date = new Date();
 	ergastAPIservice.getByID($routeParams.id).success(function (response) {
 		$scope.city = response;	
-
 	});
 	
 	ergastAPIservice.getFiveById($routeParams.id).success(function (response) {
 		$scope.nextDays = response;
-		console.log(response);	
+		// console.log(response);	
 	});
+	// ergastAPIservice.getByZip(94132,'us').success(function (response) {
+	// 	console.log(response);	
+	// });
 
 }]);

@@ -1,13 +1,73 @@
-
-h1 {
+/* latin */
+/*@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Montserrat-Regular'), url(../fonts/zhcz-_WihjSQC0oHJ9TCYAzyDMXhdD8sAj6OAJTFsBI.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}*/
+/* latin */
+@font-face {
+  font-family: 'Play';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Play'), local('Play-Regular'), url(../fonts/play.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+body {
+	font-family: 'Play', sans-serif;
+}
+/* header section */
+.header h1 {
 	text-align: center;
 	padding-bottom: 10px;
 /*	border-bottom: 1px solid #ccc;*/
-	font-family: Copperplate;
+	font-family: 'Play', sans-serif;
+	color: #fff;
 }
-
-.panel-body .temp {
+.header .panel-default>.panel-heading {
+	background-color: #27AE60;
+}
+.header .input-group {
+	width: 100%;
+}
+.header .input-group .input-group-btn {
+	width: 1%;
+}
+.header .submit {
+	color: #888;
+}
+/* header section end */
+/* content section */
+.content .panel-body .temp {
 	font-size: 30px;
 	/*padding-right: 10px;
 	padding-left: 10px;*/
+}
+.content .panel-heading {
+	background-color: #27AE60;
+	color: #fff;
+}
+.content .current-day .description {
+	display: block;
+	padding-left: 7px;
+}
+.content .current-day table td>div{
+	float: right;
+}
+.content .next-days .next-details {
+	padding-top: 5px;
+}
+
+@media screen and (min-width: 768px) {
+	.content .next-days .next-temp {
+		padding-left: 10%;
+	}
+	
+}
+@media screen and (min-width: 992px) {
+	.content .current-day .description {
+		display: inline;
+		padding-left: 0;
+	}
 }

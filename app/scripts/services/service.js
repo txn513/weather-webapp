@@ -28,6 +28,12 @@ angular.module('F1FeederApp.services', []).
         url: 'http://api.openweathermap.org/data/2.5/forecast/daily?id='+ id +'&units=metric&cnt=5&APPID=44ab237bb021408f1cc6e1d192073178&callback=JSON_CALLBACK'
       });
     }
+    ergastAPI.getIP = function(zip,country) {
+      return $http({
+        method: 'JSONP', 
+        url: 'http://ip-api.com/json/?callback=JSON_CALLBACK'
+      });
+    }
     return ergastAPI;
 
 });
