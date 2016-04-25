@@ -8,18 +8,21 @@ API 由 [OpenWeatherMap](http://openweathermap.org/) 提供
 
 ## Demo 演示
 
+演示地址 [demo](http://tianxuning.com/app/weatherapp/)
 
 
-# test
+## Installation 安装
 
-This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
-version 0.15.1.
+via git and npm
 
-## Build & development
+```
+$ git clone git@github.com:txn513/weather-webapp.git [your-app-name]
+$ cd [your-app-name]
+$ npm install
+```
 
-Run `grunt` for building and `grunt serve` for preview.
+## License
 
-## Testing
+[The MIT License](http://opensource.org/licenses/MIT)
 
-Running `grunt test` will run the unit tests with karma.
-# weather-webapp
+API provided by [OpenWeatherMap](http://openweathermap.org/)
