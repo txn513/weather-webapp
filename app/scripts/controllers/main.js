@@ -4,8 +4,13 @@ controller('driversController', ['$scope', 'ergastAPIservice', '$location', func
 	$scope.cityList = [];
 	$scope.latitude = 0;
 	$scope.longitude = 0;
+	var onOff = true;
 
 	$scope.getWeather = function(name){
+		if (!onOff) {
+			return false;
+		}
+		onOff = false;
 		if(!name){
 			alert('Please enter a city name');
 		}
@@ -19,7 +24,7 @@ controller('driversController', ['$scope', 'ergastAPIservice', '$location', func
 	        //Dig into the responde to get the relevant data
 	        	$location.path("/"+ response.id);
 	    	});
-	    	
+	    	onOff = true;
 		}
 		
 	};
