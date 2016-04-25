@@ -11,16 +11,6 @@ API 由 [OpenWeatherMap](http://openweathermap.org/) 提供
 演示地址 [demo](http://tianxuning.com/app/weatherapp/)
 
 
-## Installation 安装
-
-via git and npm
-
-```
-$ git clone git@github.com:txn513/weather-webapp.git [your-app-name]
-$ cd [your-app-name]
-$ npm install
-```
-
 ## License
 
 [The MIT License](http://opensource.org/licenses/MIT)
