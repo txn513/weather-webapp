@@ -58,6 +58,12 @@ body {
 .content .next-days .next-details {
 	padding-top: 5px;
 }
+/* footer */
+#footer {
+	text-align: center;
+	font-size: 12px;
+	color: #888;
+}
 
 @media screen and (min-width: 768px) {
 	.content .next-days .next-temp {
