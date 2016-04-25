@@ -5,7 +5,7 @@
     <title>World Weather</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
-    <link href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="styles/style.css">
 
@@ -24,7 +24,7 @@
                         <div class="input-group">                  
                           <input type="text" ng-model="cityName" placeholder="Your city name" class="form-control">
                           <div class="input-group-btn">
-                            <input type="submit" class="btn btn-default submit">Search</input>
+                            <input type="submit" class="btn btn-default submit" value="search">
                           </div>
                         </div>  
                         
@@ -56,13 +56,16 @@
   <ng-view></ng-view>
 
   
+  <div id="footer">
+    <p>An AngularJs app created by Xuning Tian | <span>Visit <a href="https://github.com/txn513/weather-webapp">Github</a></span></p>
+    <p>API provided by <a href="http://openweathermap.org/">Open Weather Map</a></p>
+  </div>
   
-  
-<script src="http://cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script>
-<script src="http://cdn.bootcss.com/angular.js/1.3.9/angular.min.js"></script>
-<script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<script src="http://cdn.bootcss.com/angular.js/1.3.9/angular-animate.min.js"></script>
-<script src="http://cdn.bootcss.com/angular.js/1.3.9/angular-route.min.js"></script>
+<script src="../bower_components/jquery/dist/jquery.js"></script>
+<script src="../bower_components/angular/angular.js"></script>
+<script src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="../bower_components/angular-animate/angular-animate.js"></script>
+<script src="../bower_components/angular-route/angular-route.js"></script>
 
 <script src="scripts/app.js"></script>
 <script src="scripts/controllers/main.js"></script>
